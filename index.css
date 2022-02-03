@@ -15,7 +15,12 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-
+/*
+    from what I've noticed, in this case responiveness is about the measurments that you use, and properties, 
+    things like max-height and max width. 
+    When starting with the website, focus on the html for the laptom screen, and then once you're done with the html, focus on the css using the small screen
+    always look at the big picture and narrow it  down as you are going forward and implementing the complexity as you need to
+*/
 body,
 h1,
 h2,
@@ -38,6 +43,7 @@ h3{
     font-weight: 900;
     line-height: 1;
     margin-bottom: 1em;
+    color: var(--clr-primary-400);
 }
 h2,h3,p{
     margin-bottom: 1em;
@@ -49,6 +55,13 @@ h2,h3,p{
 header, 
 section{
     padding: 3rem 0;/*rem, use it for reponsiveness*/
+}
+
+@media (min-width: 40em){
+    header, 
+    section{
+        padding: 7rem 0;/*rem, use it for reponsiveness*/
+    }
 }
 
 .bg-light{
@@ -71,16 +84,35 @@ section{
 }
 
 img{
+    display: block;
     max-height: 100%;
     max-width:100%;
 }
 
 .container{
     margin-inline: auto;
-    width:min(90%,70.5rem);
+    width:min(90%,70.5rem); /*use percentage and rem, avoid px!!*/
 }
 .container--narrow{
     max-width: 34rem;
+}
+
+.split{
+    display: flex;
+    flex-direction: column;
+}
+@media(min-width:40em){ /*To change the size and position when you get to a specific size*/
+    .split{
+        flex-direction: row;
+    }
+
+    .split > * { /* All the direct children of the split*/
+        flex-basis: 100%; /*for equal columns*/
+    }
+
+    .split > * + * { /* adjecent sibiling selector - any element that has a sibling before it Only use it in your media query*/
+        margin-left: 2em;
+    }
 }
 
 
